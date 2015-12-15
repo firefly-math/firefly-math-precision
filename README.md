@@ -1,2 +1,2 @@
 # firefly-math-precision
-Utilities for precision operations and evaluations
+Utilities for precision operations and evaluation
