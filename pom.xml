@@ -9,6 +9,8 @@
      <packaging>jar</packaging>
      <url>https://github.com/firefly-math/firefly-math-precision</url>
      <properties>
+          <!-- Turn off Javadoc Doclint -->
+          <additionalparam>-Xdoclint:none</additionalparam>
           <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
           <maven.compiler.target>1.8</maven.compiler.target>
      </properties>

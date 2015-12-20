@@ -14,8 +14,11 @@
 
 package com.fireflysemantics.math.precision;
 
+import static com.fireflysemantics.math.precision.PrecisionConstants.EPSILON;
+import static com.fireflysemantics.math.precision.PrecisionConstants.SAFE_MIN;
+
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.Test;;
 
 /**
  * Test cases for the {@link PrecisionAssertAssert} class.
@@ -39,7 +42,7 @@ public class PrecisionAssertTest {
 		Assert.assertTrue(
 				PrecisionAssert.equalsWithRelativeTolerance(1.987654687654968, 1.987654687654949, eps));
 
-		Assert.assertFalse(PrecisionAssert.equalsWithRelativeTolerance(PrecisionAssert.SAFE_MIN, 0.0, eps));
+		Assert.assertFalse(PrecisionAssert.equalsWithRelativeTolerance(SAFE_MIN, 0.0, eps));
 
 		Assert.assertFalse(PrecisionAssert.equalsWithRelativeTolerance(1.0000000000001e-300, 1e-300, eps));
 		Assert.assertTrue(PrecisionAssert.equalsWithRelativeTolerance(1.00000000000001e-300, 1e-300, eps));
@@ -284,8 +287,8 @@ public class PrecisionAssertTest {
 
 	@Test
 	public void testIssue721() {
-		Assert.assertEquals(-53, Math.getExponent(PrecisionAssert.EPSILON));
-		Assert.assertEquals(-1022, Math.getExponent(PrecisionAssert.SAFE_MIN));
+		Assert.assertEquals(-53, Math.getExponent(EPSILON));
+		Assert.assertEquals(-1022, Math.getExponent(SAFE_MIN));
 	}
 
 	@Test
@@ -307,11 +310,11 @@ public class PrecisionAssertTest {
 
 	@Test
 	public void testMath843() {
-		final double afterEpsilon = Math.nextAfter(PrecisionAssert.EPSILON, Double.POSITIVE_INFINITY);
+		final double afterEpsilon = Math.nextAfter(EPSILON, Double.POSITIVE_INFINITY);
 
 		// a) 1 + EPSILON is equal to 1.
 		Assert.assertTrue(1
-				+ PrecisionAssert.EPSILON == 1);
+				+ EPSILON == 1);
 
 		// b) 1 + "the number after EPSILON" is not equal to 1.
 		Assert.assertFalse(1
@@ -325,5 +328,4 @@ public class PrecisionAssertTest {
 		Assert.assertFalse(PrecisionAssert.equals(2.0f, -2.0f, 1));
 		Assert.assertTrue(PrecisionAssert.equals(0.0f, -0.0f, 0));
 	}
-
 }
